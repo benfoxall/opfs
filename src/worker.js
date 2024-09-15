@@ -1,9 +1,10 @@
-const root = await navigator.storage.getDirectory();
+const rootP = navigator.storage.getDirectory();
 const broadcast = new BroadcastChannel('opfs-events');
 
 async function scan() {
     console.time('worker.scan')
     let entries = []
+    const root = await rootP;
 
     for await (const [name, handle] of root.entries()) {
         const { size, lastModified } = await handle.getFile()
@@ -19,11 +20,13 @@ async function scan() {
 }
 
 async function remove(filename) {
+    const root = await rootP;
     await root.removeEntry(filename);
     await invalidate();
 }
 
 async function add({ filename, contents }) {
+    const root = await rootP;
     const handle = await root.getFileHandle(filename, {
         create: true,
     });
@@ -41,6 +44,7 @@ async function add({ filename, contents }) {
 }
 
 async function openFile(filename) {
+    const root = await rootP;
     const handle = await root.getFileHandle(filename);
     const file = await handle.getFile();
     const blobUrl = URL.createObjectURL(file); // Create an ObjectURL for the file
