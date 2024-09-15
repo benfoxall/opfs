@@ -114,7 +114,7 @@ class FileList extends LitElement {
     }
 }
 
-customElements.define('opfs-file-list', FileList);
+customElements.define('opfs-viewer-files', FileList);
 
 
 class OpfsViewer extends LitElement {
@@ -201,12 +201,12 @@ class OpfsViewer extends LitElement {
         Add files
         <input type="file" @change="${this._handleFileAdd}" multiple />
       </label>
-      <opfs-file-list 
+      <opfs-viewer-files 
         .files="${this.files}" 
         @file-delete="${this._handleFileDelete}"
         @file-open="${this._handleFileOpen}">
         >
-      </opfs-file-list>
+      </opfs-viewer-files>
     `;
     }
 }
