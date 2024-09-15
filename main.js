@@ -2,7 +2,6 @@
 import { LitElement, html, css } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
 
 
-
 class FileList extends LitElement {
     static styles = css`
     table {
@@ -115,10 +114,10 @@ class FileList extends LitElement {
     }
 }
 
-customElements.define('file-list', FileList);
+customElements.define('opfs-file-list', FileList);
 
 
-class LocalFileList extends LitElement {
+class OpfsViewer extends LitElement {
     static styles = css`
     :host {
       display: block;
@@ -202,14 +201,14 @@ class LocalFileList extends LitElement {
         Add files
         <input type="file" @change="${this._handleFileAdd}" multiple />
       </label>
-      <file-list 
+      <opfs-file-list 
         .files="${this.files}" 
         @file-delete="${this._handleFileDelete}"
         @file-open="${this._handleFileOpen}">
         >
-      </file-list>
+      </opfs-file-list>
     `;
     }
 }
 
-customElements.define('local-file-list', LocalFileList);
+customElements.define('opfs-viewer', OpfsViewer);
