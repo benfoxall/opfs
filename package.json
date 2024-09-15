@@ -1,0 +1,11 @@
+{
+  "name": "@benfoxall/opfs",
+  "version": "1.0.0",
+  "description": "Origin Private File System Viewer",
+  "main": "main.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "author": "",
+  "license": "MIT"
+}
