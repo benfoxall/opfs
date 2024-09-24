@@ -135,7 +135,7 @@ class OpfsViewer extends LitElement {
   constructor() {
     super();
     this.files = [];
-    debugger;
+    
     this.worker = new Worker(new URL("./worker.js", import.meta.url), { type: "module" })
 
     // Listen for messages from the worker
